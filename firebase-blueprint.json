@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "IDPData": {
+      "title": "IDP Data",
+      "description": "User's Individual Development Plan data",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "User UID" },
+        "general": {
+          "type": "object",
+          "properties": {
+            "empId": { "type": "string" },
+            "name": { "type": "string" },
+            "position": { "type": "string" },
+            "department": { "type": "string" },
+            "startDate": { "type": "string" },
+            "supervisor": { "type": "string" }
+          }
+        },
+        "goals": {
+          "type": "array"
+        },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid"]
+    }
+  },
+  "firestore": {
+    "idps/{userId}": {
+      "schema": { "$ref": "#/entities/IDPData" },
+      "description": "One IDP document per user, keyed by user UID."
+    }
+  }
+}
